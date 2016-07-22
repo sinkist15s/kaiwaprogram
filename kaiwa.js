@@ -36,6 +36,9 @@ function onButtonClick() {
 			document.write(hour.getHours()+"時間"
 							+hour.getMinutes()+"分"+
 								hour.getSeconds()+"秒です。");
+			
+			}else if(str.indexOf("おはようございます")!=-1){
+			document.write("おはよう");
 			}else{
 			document.write("すみません何言っているのかわかりません");
       }
