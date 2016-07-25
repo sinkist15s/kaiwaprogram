@@ -2,11 +2,38 @@
 	HTMLでフォームに入力された言葉をどうやって返すか？*/
 //↓プログラム書き場
 
-
-
+/*「こんにちは」か「こんばんは」に"Hello"と返す処理*/
 function onButtonClick() {
           target = document.getElementById("output");
           
+		　//今日の日付データを変数hidukeに格納
+			var hiduke=new Date(); 
+
+		　//年・月・日・曜日を取得する
+			var year 	= hiduke.getFullYear();
+			var month	= hiduke.getMonth()+1;
+			var week 	= hiduke.getDay();
+			var day 	= hiduke.getDate();
+
+			var yobi= new Array("日","月","火","水","木","金","土");
+			
+		 //祝日設定
+			var now 	= new Date();
+			var ganjitu	= new Date(2016, 1-1, 1);
+			var seijin 	= new Date(2016, 1-1, 11);
+			var kenkoku	= new Date(2016, 2-1, 11);
+			var shunbun = new Date(2016, 3-1, 20);
+			var shouwa 	= new Date(2016, 4-1, 29);
+			var kenpou 	= new Date(2016, 5-1, 3);
+			var midori 	= new Date(2016, 5-1, 4);
+			var kodomo 	= new Date(2016, 5-1, 5);
+			var umi 	= new Date(2016, 7-1, 18);
+			var keirou 	= new Date(2016, 9-1, 19);
+			var shubun 	= new Date(2016, 9-1, 22);
+			var taiiku 	= new Date(2016, 10-1, 10);
+			var bunka 	= new Date(2016, 11-1, 3);
+			var kinrou 	= new Date(2016, 11-1, 23);
+			var tennou 	= new Date(2016, 12-1, 23);
 
         /*
 		 * 検索対象文字列
@@ -17,35 +44,12 @@ function onButtonClick() {
 		 * 指定した文字列が存在する位置を検索する
 		 */
 			if(str.indexOf("こんにちは")!=-1 || str.indexOf("こんばんは")!=-1){
-				document.write("Hello");
-		}else if(str.indexOf("おはよ")!=-1 || str.indexOf("おはようございます")!=-1)){
-			document.write("おはようなぎ");
-		}else if(str.indexOf("おまえはもう死んでいる")!=-1){
-			document.write("なにぃ！！　い！？　いが、いぎ、いぐ　いけごあぁ！！");
-		}else if(str.indexOf("金よこせガキ")!=-1){
-			document.write("ごめんなさい持ってません");
-		}else if(str.indexOf("33-4")!=-1){
-			document.write("なんでや阪神関係ないやろ！");
-		}else if(str.indexOf("今日の日付は")!=-1){
-			var today = new Date();
-			document.write("今日は"+today.getFullYear()+"年"
-							+(today.getMonth()+1)+"月"+
-								today.getDate()+"日です。");
-		}else if(str.indexOf("今何時")!=-1){
-			var hour= new Date();
-			document.write(hour.getHours()+"時間"
-							+hour.getMinutes()+"分"+
-								hour.getSeconds()+"秒です。");
+				document.write("Hello!");
 			
-			}else if(str.indexOf("ありがとう")!=-1){
-			document.write("どういたしまして");
-		}else if(str.indexOf("さようなら")!=-1 || str.indexOf("さよなら")!=-1){
-			document.write("さようなら");
-		}else if(str.indexOf("ごめん")!=-1){
-			document.write("こちらこそごめんなさい");
-		}else if(str.indexOf("おめでとう")!=-1){
-document.write("どうもありがとう");
-}else if(str.indexOf("元日まであと何日？")!=-1){
+			}else if(str.indexOf("今日の日付は")!=-1){
+				document.write("西暦"+year+"年"+month+"月"+day+"日 "+yobi[week]+"曜日です！");
+			
+			}else if(str.indexOf("元日まであと何日？")!=-1){
 				count = Math.ceil( (ganjitu.getTime() - now.getTime()) / (24*60*60*1000) );
 				if(count>0){
 					document.write("元日まであと"+count+"日です");
@@ -184,8 +188,24 @@ document.write("どうもありがとう");
 				}else if(count<0){
 					document.write("もう過ぎました");
 				}
-			}else{
-			document.write("すみません何言っているのかわかりません");
-      }
-          
+			}else if(str.indexOf("ありがとう")!=-1){
+			document.write("どういたしまして");
+		}else if(str.indexOf("さようなら")!=-1 || str.indexOf("さよなら")!=-1){
+			document.write("さようなら");
+		}else if(str.indexOf("ごめん")!=-1){
+			document.write("こちらこそごめんなさい");
+		}else if(str.indexOf("おめでとう")!=-1){
+			document.write("どうもありがとう");
+			}else if(str.indexOf("おまえはもう死んでいる")!=-1){
+			document.write("なにぃ！！　い！？　いが、いぎ、いぐ　いけごあぁ！！");
+		}else if(str.indexOf("金よこせガキ")!=-1){
+			document.write("ごめんなさい持ってません");
+		}else if(str.indexOf("33-4")!=-1){
+			document.write("なんでや阪神関係ないやろ！");
+			
+
+      		}else{
+      			document.write("わかりません");
+      			alert("更新してください");
+      		}
 }
